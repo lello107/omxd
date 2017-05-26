@@ -103,6 +103,7 @@ char **m_list(char *cmd, char *file)
 		: *cmd == 'j' ? 3
 		: *cmd == 'u' ? 2
 		: *cmd == 'l' ? 2
+		: *cmd == 'y' ? LOG(0, now_next[0])
 		:               0;
 	if (list.size <= 1)
 		change &= ~2;
