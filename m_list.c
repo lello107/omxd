@@ -85,6 +85,9 @@ char **m_list(char *cmd, char *file)
 		lmode = END;
 		LOG(0, "m_list: end on\n");
 	}
+	if (*cmd == 'y') {
+		LOG(0, now_next[0]);
+	}
 	int n = to_num(file);
 	int di = lmode == SHUFFLE ? di_random() : 1;
 	int change =
@@ -103,8 +106,7 @@ char **m_list(char *cmd, char *file)
 		: *cmd == 'j' ? 3
 		: *cmd == 'u' ? 2
 		: *cmd == 'l' ? 2
-		:               0
-		: *cmd == 'y' ? LOG(0, now_next[0]);
+		:               0;
 	if (list.size <= 1)
 		change &= ~2;
 	LOG(1, "m_list Change=%d size=%d i=%d\n", change, list.size, list.i);
